@@ -25,7 +25,8 @@ import math
 import re
 import numpy as np
 import six
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+import tensorflow as tf2
 
 
 class BertConfig(object):
@@ -334,7 +335,7 @@ def get_assignment_map_from_checkpoint(tvars, init_checkpoint):
     (name, var) = (x[0], x[1])
     if name not in name_to_variable:
       continue
-    assignment_map[name] = name
+    assignment_map[name] = name_to_variable[name]
     initialized_variable_names[name] = 1
     initialized_variable_names[name + ":0"] = 1
 
@@ -358,11 +359,12 @@ def dropout(input_tensor, dropout_prob):
   output = tf.nn.dropout(input_tensor, 1.0 - dropout_prob)
   return output
 
-
 def layer_norm(input_tensor, name=None):
   """Run layer normalization on the last dimension of the tensor."""
-  return tf.contrib.layers.layer_norm(
-      inputs=input_tensor, begin_norm_axis=-1, begin_params_axis=-1, scope=name)
+  layer_norma = tf2.keras.layers.LayerNormalization(axis = -1)
+  return layer_norma(input_tensor)
+  # return tfa.layers.layer_norm(
+  #     inputs=input_tensor, begin_norm_axis=-1, begin_params_axis=-1, scope=name)
 
 
 def layer_norm_and_dropout(input_tensor, dropout_prob, name=None):
