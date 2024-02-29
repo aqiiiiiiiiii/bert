@@ -25,3 +25,7 @@ squad_2_train:
 .PHONY: squad_2_predict
 squad_2_predict:
 	./run/squad_2_predict.sh
+
+.PHONY: extract_features
+extract_features:
+	./run/extract_features.sh
