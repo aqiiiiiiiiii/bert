@@ -13,3 +13,7 @@ sentence_classification_predict:
 .PHONY: squad_1_train
 squad_1_train:
 	./run/squad_1_train.sh
+
+.PHONY: squad_1_predict
+squad_1_predict:
+	./run/squad_1_predict.sh
