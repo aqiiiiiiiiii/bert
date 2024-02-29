@@ -17,3 +17,7 @@ squad_1_train:
 .PHONY: squad_1_predict
 squad_1_predict:
 	./run/squad_1_predict.sh
+
+.PHONY: squad_2_train
+squad_2_train:
+	./run/squad_2_train.sh
