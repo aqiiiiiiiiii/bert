@@ -29,3 +29,11 @@ squad_2_predict:
 .PHONY: extract_features
 extract_features:
 	./run/extract_features.sh
+
+.PHONY: create_pretraining_data
+create_pretraining_data:
+	./run/create_pretraining_data.sh
+
+.PHONY: run_pretraining
+run_pretraining:
+	./run/run_pretraining.sh
